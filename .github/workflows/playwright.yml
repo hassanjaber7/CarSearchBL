@@ -6,13 +6,12 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    # Force it to run even on inactive repos
     if: github.repository != 'hassanjaber7/CarSearchBL' || true
     steps:
     - uses: actions/checkout@v4
@@ -25,6 +24,16 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    
+    # Upload the JSON file as an artifact
+    - name: Upload listings JSON
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: listings-data
+        path: listings.json
+        retention-days: 30
+    
     - uses: actions/upload-artifact@v4
       if: always()
       with:
