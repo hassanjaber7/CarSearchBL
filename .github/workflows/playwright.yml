@@ -40,3 +40,12 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+    - name: Commit and push updated listings
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add listings.json
+        git status
+        git commit -m "Update listings data [skip ci]" || echo "No changes to commit"
+        git push
