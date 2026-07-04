@@ -12,6 +12,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # This allows pushing to the repository
     if: github.repository != 'hassanjaber7/CarSearchBL' || true
     steps:
     - uses: actions/checkout@v4
