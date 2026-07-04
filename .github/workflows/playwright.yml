@@ -1,25 +1,19 @@
-
 name: Playwright Tests
 on:
-  # Trigger on push
   push:
     branches: [ main, master ]
-    
-  # Trigger on pull request
   pull_request:
     branches: [ main, master ]
-    
-  # Trigger manually from GitHub UI
   workflow_dispatch:
-  
-  # Trigger every 10 minutes
   schedule:
-    - cron: '*/10 * * * *'  # Runs every 10 minutes
+    - cron: '*/1 * * * *'
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    # ✅ Force it to run even on inactive repos
+    if: github.repository != 'hassanjaber7/CarSearchBL' || true
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
