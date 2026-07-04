@@ -19,8 +19,12 @@ async function getChatId() {
 
 // Configuration
 const BOT_TOKEN = '8557865588:AAHhlIvDk9Idvy1eUfmim_z6HLzzUR-dR4g'; // Get from @BotFather
-const CHAT_ID = '7518690070'; // Your personal chat ID or group ID
-
+//const CHAT_ID = '7518690070'; // Your personal chat ID or group ID
+const CHAT_IDS = [
+  '7518690070',  // Your personal chat
+  '1750750064',  // Another user
+  
+];
 // Function: Read JSON file
 function readListingsFromJson(filename = 'listings.json') {
   try {
@@ -35,15 +39,15 @@ function readListingsFromJson(filename = 'listings.json') {
 // Function: Format listings for Telegram (with Markdown support)
 function formatListingsForTelegram(listings: any[]) {
   if (!listings || listings.length === 0) {
-    return '❌ No property listings found.';
+    return '❌ No new Cars listings found.';
   }
 
   // Limit to prevent message too long error (Telegram has 4096 char limit)
   const maxListings = 15;
   const displayListings = listings.slice(0, maxListings);
   
-  let message = '🏠 *New Property Listings*\n\n';
-  message += `📊 *Found ${listings.length} properties*\n`;
+  let message = '🏠 *New Car Listings*\n\n';
+  message += `📊 *Found ${listings.length} cars*\n`;
   message += '═'.repeat(30) + '\n\n';
   
   displayListings.forEach((listing, index) => {
@@ -64,7 +68,43 @@ function formatListingsForTelegram(listings: any[]) {
 }
 
 // Function: Send message via Telegram Bot API
-async function sendTelegramMessage(message: string, chatId = CHAT_ID) {
+// async function sendTelegramMessage(message: string, chatId = CHAT_ID) {
+//   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  
+//   try {
+//     const response = await fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         chat_id: chatId,
+//         text: message,
+//         parse_mode: 'Markdown', // Enables bold, italic, links
+//         disable_web_page_preview: true, // Previews are optional
+//       }),
+//     });
+    
+//     const data = await response.json();
+    
+//     if (data.ok) {
+//       console.log('✅ Message sent successfully!');
+//       console.log(`📨 Message ID: ${data.result.message_id}`);
+//       return data;
+//     } else {
+//       console.error('❌ Failed to send message:', data.description);
+//       return null;
+//     }
+//   } catch (error: unknown) {
+//     console.error(
+//       '❌ Error sending message:',
+//       error instanceof Error ? error.message : String(error)
+//     );
+//     return null;
+//   }
+// }
+
+async function sendTelegramMessage(message: string, chatId: string) {
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   
   try {
@@ -76,29 +116,52 @@ async function sendTelegramMessage(message: string, chatId = CHAT_ID) {
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
-        parse_mode: 'Markdown', // Enables bold, italic, links
-        disable_web_page_preview: true, // Previews are optional
+        parse_mode: 'Markdown',
+        disable_web_page_preview: true,
       }),
     });
     
     const data = await response.json();
     
     if (data.ok) {
-      console.log('✅ Message sent successfully!');
-      console.log(`📨 Message ID: ${data.result.message_id}`);
+      console.log(`✅ Message sent to ${chatId}`);
       return data;
     } else {
-      console.error('❌ Failed to send message:', data.description);
+      console.error(`❌ Failed to send to ${chatId}:`, data.description);
       return null;
     }
   } catch (error: unknown) {
     console.error(
-      '❌ Error sending message:',
+      `❌ Error sending to ${chatId}:`,
       error instanceof Error ? error.message : String(error)
     );
     return null;
   }
 }
+
+// ✅ Send to multiple chats
+async function sendTelegramMessageToMultiple(message: string, chatIds: string[] = CHAT_IDS) {
+  console.log(`📱 Sending to ${chatIds.length} chats...`);
+  
+  let successCount = 0;
+  let failCount = 0;
+  
+  for (const chatId of chatIds) {
+    const result = await sendTelegramMessage(message, chatId);
+    
+    if (result) {
+      successCount++;
+    } else {
+      failCount++;
+    }
+    
+    // Rate limiting - 500ms delay between messages
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+  
+  console.log(`📊 Summary: ${successCount} succeeded, ${failCount} failed`);
+}
+
 
 // Function: Send JSON file as document
 // async function sendJsonFile(filename = 'listings.json', chatId = CHAT_ID) {
@@ -137,7 +200,7 @@ async function sendTelegramMessage(message: string, chatId = CHAT_ID) {
 // Main function: Read JSON and send to Telegram
 export async function sendListingsToTelegram() {
   console.log('📖 Reading listings from JSON...');
-  const listings = readListingsFromJson('listings.json');
+  const listings = readListingsFromJson('MostRecentListings.json');
   
   if (!listings) {
     console.log('❌ No data found in JSON file');
@@ -149,7 +212,7 @@ export async function sendListingsToTelegram() {
   // 1. Send formatted message
   console.log('📱 Formatting and sending message...');
   const message = formatListingsForTelegram(listings);
-  await sendTelegramMessage(message);
+  await sendTelegramMessageToMultiple(message);
   
   // 2. Also send the JSON file as attachment
 //   console.log('📎 Sending JSON file...');
@@ -159,4 +222,3 @@ export async function sendListingsToTelegram() {
 }
 
 // Run it
-sendListingsToTelegram();
