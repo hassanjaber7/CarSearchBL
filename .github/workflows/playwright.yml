@@ -12,7 +12,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    # ✅ Force it to run even on inactive repos
+    # Force it to run even on inactive repos
     if: github.repository != 'hassanjaber7/CarSearchBL' || true
     steps:
     - uses: actions/checkout@v4
