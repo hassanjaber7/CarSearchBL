@@ -22,8 +22,8 @@ const BOT_TOKEN = '8557865588:AAHhlIvDk9Idvy1eUfmim_z6HLzzUR-dR4g'; // Get from 
 //const CHAT_ID = '7518690070'; // Your personal chat ID or group ID
 const CHAT_IDS = [
   '7518690070',  // Your personal chat
-  '1750750064',
-  '8837237336'  // Another user
+  //'1750750064',
+  //'8837237336'  // Another user
   
 ];
 // Function: Read JSON file
