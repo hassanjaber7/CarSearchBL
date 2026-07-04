@@ -21,9 +21,9 @@ async function getChatId() {
 const BOT_TOKEN = '8557865588:AAHhlIvDk9Idvy1eUfmim_z6HLzzUR-dR4g'; // Get from @BotFather
 //const CHAT_ID = '7518690070'; // Your personal chat ID or group ID
 const CHAT_IDS = [
-  '7518690070',  // Your personal chat
-  //'1750750064',
-  //'8837237336'  // Another user
+  '7518690070',  // me
+  //'1750750064', //Usef
+  '8837237336'  // Jaber
   
 ];
 // Function: Read JSON file
