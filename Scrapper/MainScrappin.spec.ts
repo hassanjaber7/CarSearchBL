@@ -12,9 +12,13 @@ test('has title', async ({ page }) => {
   await page.goto('https://www.2ememain.be/l/autos/f/essence+automatique/473+534/#Language:all-languages|offeredSince:Vandaag|PriceCentsTo:300000|constructionYearFrom:2000');
   // await page.waitForLoadState('networkidle');
   // await page.waitForTimeout(5000);
-  
+  try{
   const consentFrame = page.frameLocator('iframe[title="SP Consent Message"]'); 
   await consentFrame.getByRole('link', { name: 'Accepter' }).click();
+  }
+  catch (error) {
+    console.log('No consent frame found, continuing...');
+  }
 
   // Small extra wait for dynamic content
 
