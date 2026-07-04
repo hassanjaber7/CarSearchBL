@@ -40,15 +40,15 @@ function readListingsFromJson(filename = 'listings.json') {
 // Function: Format listings for Telegram (with Markdown support)
 function formatListingsForTelegram(listings: any[]) {
   if (!listings || listings.length === 0) {
-    return '❌ No new Cars listings found.';
+    return null;
   }
 
   // Limit to prevent message too long error (Telegram has 4096 char limit)
   const maxListings = 15;
   const displayListings = listings.slice(0, maxListings);
   
-  let message = '🏠 *New Car Listings*\n\n';
-  message += `📊 *Found ${listings.length} cars*\n`;
+  let message = ' *New Car Listings*\n\n';
+  message += ` *Found ${listings.length} cars*\n`;
   message += '═'.repeat(30) + '\n\n';
   
   displayListings.forEach((listing, index) => {
@@ -60,10 +60,10 @@ function formatListingsForTelegram(listings: any[]) {
   
   if (listings.length > maxListings) {
     message += `\n... and ${listings.length - maxListings} more listings.\n`;
-    message += `📊 Full list attached as JSON file.`;
+    message += ` Full list attached as JSON file.`;
   }
   
-  message += `\n📅 *Updated:* ${new Date().toLocaleString()}`;
+  message += `\n *Updated:* ${new Date().toLocaleString()}`;
   
   return message;
 }
