@@ -1,31 +1,18 @@
-import fs from 'fs';
-async function getChatId() {
-  const botToken = '8557865588:AAHhlIvDk9Idvy1eUfmim_z6HLzzUR-dR4g';
-  const url = `https://api.telegram.org/bot${botToken}/getUpdates`;
-  
-  const response = await fetch(url);
-  const data = await response.json();
-  
-  if (data.ok && data.result.length > 0) {
-    const chatId = data.result[0].message.chat.id;
-    console.log(`Your Chat ID: ${chatId}`);
-    return chatId;
-  } else {
-    console.log('Send a message to your bot first, then run this again');
-    return null;
-  }
-}
 
+import fs from 'fs';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
 
 // Configuration
-const BOT_TOKEN = '8557865588:AAHhlIvDk9Idvy1eUfmim_z6HLzzUR-dR4g'; // Get from @BotFather
-//const CHAT_ID = '7518690070'; // Your personal chat ID or group ID
-const CHAT_IDS = [
-  '7518690070',  // me
-  //'1750750064', //Usef
-  '8837237336'  // Jaber
+// getting the bot token and chat IDs from environment variables
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const CHAT_IDS = process.env.TELEGRAM_CHAT_IDS?.split(',').map(id => id.trim()) || [];
+
+
   
-];
+
 // Function: Read JSON file
 function readListingsFromJson(filename = 'listings.json') {
   try {
@@ -40,22 +27,22 @@ function readListingsFromJson(filename = 'listings.json') {
 // Function: Format listings for Telegram (with Markdown support)
 function formatListingsForTelegram(listings: any[]) {
   if (!listings || listings.length === 0) {
-    return 'No new cars were found in the last hour, we will keep you updated! 😊';
+    return null;
   }
 
   // Limit to prevent message too long error (Telegram has 4096 char limit)
   const maxListings = 15;
   const displayListings = listings.slice(0, maxListings);
   
-  let message = '🚙 *New Car Listings*\n\n';
-  message += `📊 *Found ${listings.length} cars*\n`;
-  message += '═'.repeat(30) + '\n\n';
+  let message = '🚙 *Latest Car Listings*\n\n';
+  message += `* Number of Cars found: ${listings.length}*\n`;
+  message += '═'.repeat(29) + '\n\n';
   
   displayListings.forEach((listing, index) => {
     message += `*${index + 1}. ${listing.title || 'No title'}*\n`;
     message += `💰 *Price:* ${listing.price || 'N/A'}\n`;
     message += `📍 *Location:* ${listing.location || 'N/A'}\n`;
-    message += `🔗 [View Listing](${listing.link || '#'})\n\n`;
+    message += `🔗 [Link](${listing.link || '#'})\n\n`;
   });
   
   if (listings.length > maxListings) {
@@ -63,52 +50,18 @@ function formatListingsForTelegram(listings: any[]) {
     message += ` Full list attached as JSON file.`;
   }
   
-  message += `\n *Updated:* ${new Date().toLocaleString()}`;
+  message += `\n🗓️ *Updated:* ${new Date().toLocaleDateString()}`;
   
   return message;
 }
 
-// Function: Send message via Telegram Bot API
-// async function sendTelegramMessage(message: string, chatId = CHAT_ID) {
-//   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         chat_id: chatId,
-//         text: message,
-//         parse_mode: 'Markdown', // Enables bold, italic, links
-//         disable_web_page_preview: true, // Previews are optional
-//       }),
-//     });
-    
-//     const data = await response.json();
-    
-//     if (data.ok) {
-//       console.log('✅ Message sent successfully!');
-//       console.log(`📨 Message ID: ${data.result.message_id}`);
-//       return data;
-//     } else {
-//       console.error('❌ Failed to send message:', data.description);
-//       return null;
-//     }
-//   } catch (error: unknown) {
-//     console.error(
-//       '❌ Error sending message:',
-//       error instanceof Error ? error.message : String(error)
-//     );
-//     return null;
-//   }
-// }
+
 
 async function sendTelegramMessage(message: string, chatId: string) {
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   
   try {
+    
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -164,40 +117,6 @@ async function sendTelegramMessageToMultiple(message: string, chatIds: string[] 
 }
 
 
-// Function: Send JSON file as document
-// async function sendJsonFile(filename = 'listings.json', chatId = CHAT_ID) {
-//   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`;
-  
-//   try {
-//     const fileData = fs.readFileSync(filename);
-//     const formData = new FormData();
-//     formData.append('chat_id', chatId);
-//     formData.append('document', new Blob([fileData]), filename);
-//     formData.append('caption', '📊 Full listings data in JSON format');
-    
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       body: formData,
-//     });
-    
-//     const data = await response.json();
-    
-//     if (data.ok) {
-//       console.log('✅ JSON file sent successfully!');
-//       return data;
-//     } else {
-//       console.error('❌ Failed to send file:', data.description);
-//       return null;
-//     }
-//   } catch (error: unknown) {
-//     console.error(
-//       '❌ Error sending file:',
-//       error instanceof Error ? error.message : String(error)
-//     );
-//     return null;
-//   }
-// }
-
 // Main function: Read JSON and send to Telegram
 export async function sendListingsToTelegram() {
   console.log('📖 Reading listings from JSON...');
@@ -212,14 +131,22 @@ export async function sendListingsToTelegram() {
   
   // 1. Send formatted message
   console.log('📱 Formatting and sending message...');
+  if (!listings || listings.length === 0) {
+    console.log('❌ No listings to send');
+    return;
+  }
   const message = formatListingsForTelegram(listings);
+
+  if (!message) {
+    console.log('❌ Failed to format listings for Telegram');
+    return;
+  }
+
   await sendTelegramMessageToMultiple(message);
   
-  // 2. Also send the JSON file as attachment
-//   console.log('📎 Sending JSON file...');
-//   await sendJsonFile('listings.json');
+
   
   console.log('✅ All done! Check your Telegram.');
 }
 
-// Run it
+
