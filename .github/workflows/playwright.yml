@@ -12,6 +12,10 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+     # Inject GitHub Secrets as environment variables
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
     permissions:
       contents: write  # This allows pushing to the repository
     if: github.repository != 'hassanjaber7/CarSearchBL' || true
