@@ -9,7 +9,7 @@ test('has title', async ({ page }) => {
     // Load existing listings
   const existingListings = await loadExistingListings('listings.json');
   //open the page that is sorted by creation date in descending order
-  await page.goto('https://www.2ememain.be/l/autos/f/essence+automatique/473+534/#Language:all-languages|offeredSince:Vandaag|PriceCentsTo:300000|constructionYearFrom:2000');
+  await page.goto('https://www.2ememain.be/l/autos/f/essence+automatique/473+534/#Language:all-languages|offeredSince:Vandaag|PriceCentsTo:400000|constructionYearFrom:2000');
   // await page.waitForLoadState('networkidle');
   // await page.waitForTimeout(5000);
 
@@ -69,7 +69,7 @@ test('has title', async ({ page }) => {
       if (mileageNumber > 150) {
         continue;
       }
-      
+
       console.log('Title:', title, 'Price:', price, 'Location:', location, 'CreationDay:', CreationDay, 'Link:', currentUrl, 'Mileage:', mileage);
       
       // Push the new listing data to the array
