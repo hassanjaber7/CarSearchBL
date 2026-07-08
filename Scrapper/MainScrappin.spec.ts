@@ -54,16 +54,29 @@ test('has title', async ({ page }) => {
 
       await page.waitForLoadState('networkidle');
       const currentUrl = page.url();
+      // Extract the mileage from the listing page
+      const mileage = await page.getByText('km').first().textContent();
+      
+      
 
       await page.goBack();
       await page.waitForLoadState('networkidle');
       await page.waitForTimeout(500);
 
-      console.log('Title:', title, 'Price:', price, 'Location:', location, 'CreationDay:', CreationDay, 'Link:', currentUrl);
+      // Filter out listings with mileage greater than 150 km
+      const mileageNumber = parseFloat(mileage ?? '0');
+
+      if (mileageNumber > 150) {
+        continue;
+      }
+      
+      console.log('Title:', title, 'Price:', price, 'Location:', location, 'CreationDay:', CreationDay, 'Link:', currentUrl, 'Mileage:', mileage);
+      
       // Push the new listing data to the array
       listingData.push({
         title: title?.trim() ?? '',
         price: price?.trim() ?? '',
+        mileage: mileage?.trim() ?? '',
         location: location?.trim().replace('•', '').trim() ?? '',
         creationDate: CreationDay?.trim() ?? '',
         link: currentUrl ?? ''

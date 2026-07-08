@@ -41,8 +41,9 @@ function formatListingsForTelegram(listings: any[]) {
   displayListings.forEach((listing, index) => {
     message += `*${index + 1}. ${listing.title || 'No title'}*\n`;
     message += `💰 *Price:* ${listing.price || 'N/A'}\n`;
+    message += `🛣️ *KM:* ${listing.mileage || 'N/A'}\n`;
     message += `📍 *Location:* ${listing.location || 'N/A'}\n`;
-    message += `🔗 [Link](${listing.link || '#'})\n\n`;
+    message += `🔗 [View Link](${listing.link || '#'})\n\n`;
   });
   
   if (listings.length > maxListings) {
