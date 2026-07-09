@@ -34,6 +34,7 @@ function formatListingsForTelegram(listings: any[]) {
   const maxListings = 15;
   const displayListings = listings.slice(0, maxListings);
   
+  // Build the message string
   let message = '🚙 *Latest Car Listings*\n\n';
   message += `* Number of Cars found: ${listings.length}*\n`;
   message += '═'.repeat(29) + '\n\n';
@@ -46,6 +47,7 @@ function formatListingsForTelegram(listings: any[]) {
     message += `🔗 [View Link](${listing.link || '#'})\n\n`;
   });
   
+  // If there are more listings than the max limit, indicate that
   if (listings.length > maxListings) {
     message += `\n... and ${listings.length - maxListings} more listings.\n`;
     message += ` Full list attached as JSON file.`;
@@ -57,7 +59,7 @@ function formatListingsForTelegram(listings: any[]) {
 }
 
 
-
+// Function: Send message to Telegram
 async function sendTelegramMessage(message: string, chatId: string) {
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   
@@ -94,7 +96,7 @@ async function sendTelegramMessage(message: string, chatId: string) {
   }
 }
 
-// ✅ Send to multiple chats
+// Function: Send message to multiple Telegram chats with rate limiting
 async function sendTelegramMessageToMultiple(message: string, chatIds: string[] = CHAT_IDS) {
   console.log(`📱 Sending to ${chatIds.length} chats...`);
   
