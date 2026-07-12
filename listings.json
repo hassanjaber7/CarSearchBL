@@ -22,5 +22,45 @@
     "location": "Wilrijk",
     "creationDate": "Aujourd'hui",
     "link": "https://www.2ememain.be/v/autos/mercedes-benz/m2419485585-mercedes-c180-automaat-benzine-weinig-kms"
+  },
+  {
+    "title": "Volkswagen Passat 1.6i Automaat 2008",
+    "price": "€ 3.250,-",
+    "mileage": "144.000 km",
+    "location": "Hasselt",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/volkswagen/m2419565830-volkswagen-passat-1-6i-automaat-2008?_gl=1*10ztedx*_up*MQ..*_ga*OTU0OTkyNjIuMTc4Mzg1NjQ3Mw..*_ga_HS0GGDE3SH*czE3ODM4NTY0NzAkbzEkZzAkdDE3ODM4NTY0NzAkajYwJGwwJGgyNDA4NzgxMDg."
+  },
+  {
+    "title": "Smart Forfour automatique | 2005 | 1.1 Essence | 127 000 km",
+    "price": "€ 2.950,-",
+    "mileage": "127.000 km",
+    "location": "Ledegem",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/smart/m2419556880-smart-forfour-automatique-2005-1-1-essence-127-000-km?_gl=1*wyx6wx*_up*MQ..*_ga*MjU4Mjg5Mi4xNzgzODU2NDg5*_ga_HS0GGDE3SH*czE3ODM4NTY0ODckbzEkZzAkdDE3ODM4NTY0ODckajYwJGwwJGgyMDc0NDI0NzYw"
+  },
+  {
+    "title": "Opel insignia 1.6 benzine turbo bj 2014 84000 km export",
+    "price": "€ 3.950,-",
+    "mileage": "84.000 km",
+    "location": "Aartselaar",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/opel/m2419552047-opel-insignia-1-6-benzine-turbo-bj-2014-84000-km-export?_gl=1*g96yqt*_up*MQ..*_ga*NTc3NTg4ODk2LjE3ODM4NTY0OTU.*_ga_HS0GGDE3SH*czE3ODM4NTY0OTIkbzEkZzAkdDE3ODM4NTY0OTIkajYwJGwwJGgxOTYxMTM4MTAx"
+  },
+  {
+    "title": "Mazda 2 1.4 benzine Automaat bj 2003 147923 km Airco",
+    "price": "€ 2.950,-",
+    "mileage": "147.923 km",
+    "location": "Aartselaar",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/mazda/m2419551980-mazda-2-1-4-benzine-automaat-bj-2003-147923-km-airco?_gl=1*1ox8zm4*_up*MQ..*_ga*MTMxMjM4ODQyNS4xNzgzODU2NTAy*_ga_HS0GGDE3SH*czE3ODM4NTY1MDAkbzEkZzAkdDE3ODM4NTY1MDAkajYwJGwwJGgxMDU2NjUwMjM0"
+  },
+  {
+    "title": "VW polo 1.4 benzine MPI automaat",
+    "price": "€ 1.500,-",
+    "mileage": "112.500 km",
+    "location": "Leuven",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/volkswagen/m2419546699-vw-polo-1-4-benzine-mpi-automaat"
   }
 ]
