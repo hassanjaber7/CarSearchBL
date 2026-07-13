@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "title": "Mercedes-Benz A-Klasse A 140 Avantgarde",
+    "price": "€ 2.500,-",
+    "mileage": "92.763 km",
+    "location": "Zwijndrecht",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/mercedes-benz/m2419809565-mercedes-benz-a-klasse-a-140-avantgarde?_gl=1*fkez93*_up*MQ..*_ga*MTkxMDE4NTQyLjE3ODM5MzE3NTc.*_ga_HS0GGDE3SH*czE3ODM5MzE3NTQkbzEkZzAkdDE3ODM5MzE3NTQkajYwJGwwJGgxOTQ0NjU2NjQ."
+  },
+  {
+    "title": "Nieuw voertuig",
+    "price": "€ 3.500,-",
+    "mileage": "139.823 km",
+    "location": "Zwijndrecht",
+    "creationDate": "Aujourd'hui",
+    "link": "https://www.2ememain.be/v/autos/mercedes-benz/m2419809563-nieuw-voertuig?_gl=1*urd9qx*_up*MQ..*_ga*MTM4OTEzNzQ2LjE3ODM5MzE3NjU.*_ga_HS0GGDE3SH*czE3ODM5MzE3NjMkbzEkZzAkdDE3ODM5MzE3NjMkajYwJGwwJGgxNDY2ODQ1NjMx"
+  }
+]
