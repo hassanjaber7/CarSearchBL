@@ -55,8 +55,11 @@ test('has title', async ({ page }) => {
       await page.waitForLoadState('networkidle');
       const currentUrl = page.url();
       // Extract the mileage from the listing page
-      const mileage = await page.getByText('km').first().textContent();
-      
+      const locateMileage = await page.locator('.CarAttributesMainGroup-itemWithIconWrapper-mileage .CarAttributesMainGroup-value');
+      let mileage = '0';
+      if (await locateMileage.isVisible()){
+          mileage = await locateMileage.textContent() ?? '';
+      }
       
 
       await page.goBack();
@@ -68,6 +71,10 @@ test('has title', async ({ page }) => {
 
       if (mileageNumber > 150) {
         continue;
+      }
+      
+      if(mileage === '0'){
+        mileage = 'N/A'
       }
 
       console.log('Title:', title, 'Price:', price, 'Location:', location, 'CreationDay:', CreationDay, 'Link:', currentUrl, 'Mileage:', mileage);
