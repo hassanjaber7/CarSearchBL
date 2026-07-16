@@ -1,70 +1,8 @@
 [
   {
-    "title": "Citroën",
-    "price": "€ 2.500,-",
-    "location": "Hoboken",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/citroen/m2416865151-citroen"
-  },
-  {
-    "title": "Opel Astra essence, boîte automatique, contrôle technique",
-    "price": "€ 2.950,-",
-    "location": "Antwerpen",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/opel/m2416883639-opel-astra-essence-boite-automatique-controle-technique?_gl=1*1h8w132*_up*MQ..*_ga*MTAwNzM4Nzc2Ni4xNzgzMTYxMDA5*_ga_HS0GGDE3SH*czE3ODMxNjEwMDYkbzEkZzAkdDE3ODMxNjEwMDYkajYwJGwwJGg4MTg4Njg5MzA."
-  },
-  {
-    "title": "Jaguar X Type 2100 v6 Essence Automatique",
-    "price": "€ 2.500,-",
-    "location": "Asse",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/jaguar/m2416849086-jaguar-x-type-2100-v6-essence-automatique?_gl=1*1h8kocw*_up*MQ..*_ga*NDA1MjI3MzU4LjE3ODMxNjEwMjE.*_ga_HS0GGDE3SH*czE3ODMxNjEwMjAkbzEkZzAkdDE3ODMxNjEwMjAkajYwJGwwJGgxMzkxMDYxNzY0"
-  },
-  {
-    "title": "Chrysler PT Cruiser automatique ! Approuvé pour la vente !",
-    "price": "€ 2.950,-",
-    "location": "Gent",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/chrysler/m2416848303-chrysler-pt-cruiser-automatique-approuve-pour-la-vente?_gl=1*h9oao4*_up*MQ..*_ga*MTcyNDQ5MDkyMy4xNzgzMTYxMDM2*_ga_HS0GGDE3SH*czE3ODMxNjEwMzQkbzEkZzAkdDE3ODMxNjEwMzQkajYwJGwwJGgyMDY0NzkyNzk3"
-  },
-  {
-    "title": "Zafira",
-    "price": "€ 2.000,-",
-    "location": "Puurs",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/opel/m2416846677-zafira"
-  },
-  {
-    "title": "Audi a4 s line 2.4 v6 2004",
-    "price": "€ 2.500,-",
-    "location": "Waasmunster",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/audi/m2416840727-audi-a4-s-line-2-4-v6-2004"
-  },
-  {
-    "title": "Audi a4 s line 2.4 v6 2004",
-    "price": "€ 2.500,-",
-    "location": "Waasmunster",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/audi/m2416840727-audi-a4-s-line-2-4-v6-2004"
-  },
-  {
-    "title": "Ford Mondeo/2.0Benzine/2006/152.000Km/Carnet/Automatique",
-    "price": "€ 3.000,-",
-    "location": "Meise + Deel Van Brussegem",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/ford/m2416831208-ford-mondeo-2-0benzine-2006-152-000km-carnet-automatique?_gl=1*1p0cxrn*_up*MQ..*_ga*MTQyMDg0MDMzNS4xNzgzMTYxMDg3*_ga_HS0GGDE3SH*czE3ODMxNjEwODUkbzEkZzAkdDE3ODMxNjEwODUkajYwJGwwJGgyMTA3NjIwODYy"
-  },
-  {
-    "title": "Citroen c4 1.6 benzine automaat",
-    "price": "€ 3.000,-",
-    "location": "Hasselt",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/citroen/m2416826621-citroen-c4-1-6-benzine-automaat"
-  },
-  {
-    "title": "Peugeot 206 Automatique/Climatisé/avec inspection",
+    "title": "Peugeot 206 Automatique Avec Inspection",
     "price": "€ 2.700,-",
+    "mileage": "119.960 km",
     "location": "Courtrai",
     "creationDate": "Aujourd'hui",
     "link": "https://www.2ememain.be/v/autos/peugeot/m2416822433-peugeot-206-automatique-climatise-avec-inspection?_gl=1*16vcbh0*_up*MQ..*_ga*ODEzMzAyMTA3LjE3ODMxNjExMTM.*_ga_HS0GGDE3SH*czE3ODMxNjExMTEkbzEkZzAkdDE3ODMxNjExMTEkajYwJGwwJGgxMDEyMjE3MzQx"
@@ -369,13 +307,5 @@
     "location": "Lebbeke",
     "creationDate": "Aujourd'hui",
     "link": "https://www.2ememain.be/v/autos/nissan/m2418506591-nissan-micra-boite-automatique-144-000-km?_gl=1*x5bok*_up*MQ..*_ga*MTUwODgwNDg2MC4xNzgzNTQ3MTky*_ga_HS0GGDE3SH*czE3ODM1NDcxOTAkbzEkZzAkdDE3ODM1NDcxOTAkajYwJGwwJGg3Mjk4NzYzNzM."
-  },
-  {
-    "title": "Peugeot 206 Automatique Avec Inspection",
-    "price": "€ 2.700,-",
-    "mileage": "119.960 km",
-    "location": "Courtrai",
-    "creationDate": "Aujourd'hui",
-    "link": "https://www.2ememain.be/v/autos/peugeot/m2420746401-peugeot-206-automatique-avec-inspection"
   }
 ]
